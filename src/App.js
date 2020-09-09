@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState, useEffect}  from 'react';
 import './App.css';
+// import Sidebar from './Sidebar'
+// import BookContainer from './BookContainer';
+// import Book from './Book'
+import Header from './Header'
+import Books from './Books'
 
-function App() {
+const App = () => {
+  const [value, setValue] = useState([])
+  
+
+ 
+ 
+
+useEffect(() => {
+  fetch("http://localhost:3000/books")
+   .then(r => r.json())
+   .then(data => {
+       setValue(data)
+       console.log("data", data)}
+       )
+  }, [] 
+  );
+
+
+  
+           
+        
+  // }
+   
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+ <div >
+  <Header/>
+  <Books/>
+ {/* <BookContainer value={value} /> */}
+ 
+ </div>
   );
 }
+
 
 export default App;
